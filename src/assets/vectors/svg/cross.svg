@@ -1,0 +1,114 @@
+<svg
+    width="155px"
+    height="155px"
+    viewBox="-25 -25 210 210"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+    <style>
+        #check-group {
+        animation: 0.32s ease-in-out 1.03s check-group;
+        transform-origin: center;
+        }
+
+        #check-group #check {
+        animation: 0.34s cubic-bezier(0.65, 0, 1, 1) 0.8s forwards check;
+        stroke-dasharray: 0, 75px;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        }
+
+        #check-group #outline {
+        animation: 0.38s ease-in outline;
+        transform: rotate(0deg);
+        transform-origin: center;
+        }
+
+        #check-group #white-circle {
+        animation: 0.35s ease-in 0.35s forwards circle;
+        transform: none;
+        transform-origin: center;
+        }
+
+        @keyframes outline {
+        from {
+        stroke-dasharray: 0, 345.576px;
+        }
+        to {
+        stroke-dasharray: 345.576px, 345.576px;
+        }
+        }
+        @keyframes circle {
+        from {
+        transform: scale(1);
+        }
+        to {
+        transform: scale(0);
+        }
+        }
+        @keyframes check {
+        from {
+        stroke-dasharray: 0, 75px;
+        }
+        to {
+        stroke-dasharray: 75px, 75px;
+        }
+        }
+        @keyframes check-group {
+        from {
+        transform: scale(1);
+        }
+        50% {
+        transform: scale(1.09);
+        }
+        to {
+        transform: scale(1);
+        }
+        }
+    </style>
+    <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="26.9%" stop-color="#F43939"></stop>
+            <stop offset="100.12%" stop-color="#FF5656"></stop>
+        </linearGradient>
+    </defs>
+    <circle cx="80" cy="80" r="95" stroke="#1a1a1a" stroke-width="15" fill="none" />
+
+    <g
+        id="check-group"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+    >
+        <circle
+            id="filled-circle"
+            fill="url(#gradient)"
+            cx="80"
+            cy="80"
+            r="54.5"
+        />
+        <circle
+            id="white-circle"
+            fill="#000000"
+            cx="80"
+            cy="80"
+            r="55.5"
+        />
+        <circle
+            id="outline"
+            stroke="url(#gradient)"
+            stroke-width="4"
+            cx="80"
+            cy="80"
+            r="54.5"
+        />
+        <polyline id="check" class="cross1 path"
+            style="fill:none;stroke:#000;stroke-width:8.5;stroke-linejoin:round;"
+            points="57,104.5 104.5,52.5" />
+        <polyline id="check" class="cross2 path"
+            style="fill:none;stroke:#000;stroke-width:8.5;stroke-linejoin:round;"
+            points="57,54.5 104,104" />
+    </g>
+</svg>

@@ -1,0 +1,24 @@
+@import '../../mixins.scss';
+
+.auth-btns-wrapper {
+    cursor: pointer;
+    border: 1px solid $theme-golden;
+    border-radius: 6px;
+    font-size: 11px;
+    .login-btn {
+        padding: 3px 12px 2px 12px;
+        text-align: center;
+        border-radius: 6px 0 0 6px;
+        &:hover {
+            background-color: $theme-bg-color;
+        }
+    }
+    .signup-btn {
+        padding: 3px 12px 2px 12px;
+        text-align: center;
+        color: $theme-bg-color;
+        border-radius: 0 5px 5px 0;
+        background-image: linear-gradient(to right,$theme-golden-gradient-light 0%,$theme-golden-gradient-dark 100%);
+    }
+  }
+  

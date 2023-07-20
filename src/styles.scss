@@ -1,1 +1,154 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('//fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import "mixins";
+@import 'intl-tel-input/build/css/intlTelInput.css';
+@import 'ngx-toastr/toastr';
+
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  align-items: center;
+  -webkit-align-items: center;
+  align-content: center;
+  -webkit-align-content: center;
+  font-display: swap;
+
+  img {
+    aspect-ratio: attr(width) / attr(height);
+  }
+}
+
+body {
+  margin: 0;
+  font-size: 14px;
+  color: $theme-white;
+  font-family: $font-family-poppins;
+}
+
+.bg-theme-dark {
+  background-color: $theme-gray-color;
+}
+
+mat-drawer-container.theme-wrapper {
+  background-color: $theme-bg-color;
+  height: 100vh;
+  color: $theme-white;
+  mat-drawer {
+    background-color: $theme-bg-color;
+    .sidebar {
+      height: calc(100vh - 32px);
+    }
+  }
+
+  mat-drawer-content {
+    height: 100vh;
+    .top-nav {
+      li {
+        &:not(:last-child) {
+          margin-right: 15px;
+        }
+        a {
+          img {
+            margin-bottom: 10px;
+          }
+          font-size: 10px;
+          color: $theme-white;
+          text-decoration: none;
+          &.active,
+          &:hover {
+            color: $theme-golden;
+          }
+        }
+      }
+    }
+  }
+
+  .content-area {
+    height: calc(100vh - 125px);
+    overflow: auto;
+  }
+}
+
+.theme-bottom-wrapper mat-bottom-sheet-container {
+  background-color: $theme-gray-color;
+  color: $theme-white;
+  padding: 24px 12px 0 12px;
+  .tiles {
+    background-color: $theme-bg-color;
+    border-radius: 6px;
+    width: 100px;
+    a {
+      font-size: 10px;
+      color:$theme-white;
+      img {
+        margin-bottom: 10px;
+      }
+      &.active {
+        color: $theme-golden;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.theme-modal {
+  mat-dialog-container {
+    .mdc-dialog__surface {
+      background-color: $theme-modal-bg;
+      color: $theme-white;
+      border-radius: 20px;
+    }
+  }
+  .modal-head {
+    border-bottom: 1px solid $theme-border;
+  }
+  mat-dialog-actions {
+    border-top: 1px solid $theme-border;
+  }
+}
+
+.iti {
+  display: flex;
+  .selected-dial-code {
+    color:$theme-white
+  }
+}
+
+.form-control.custom {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: $theme-white !important;
+  background-color: $theme-input-bg !important;
+  box-shadow: none;
+  &:focus {
+    border-color: $theme-golden;
+    background-color: $theme-input-focus-bg;
+  }
+}
+
+.btn.theme-btn {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: $theme-bg-color;
+  background-image: linear-gradient(to right,$theme-golden-gradient-light 0%,$theme-golden-gradient-dark 100%);
+  box-shadow: none;
+  font-weight: bold;
+  &:disabled {
+    border-color: $theme-golden;
+    background-color: $theme-input-focus-bg;
+    cursor: not-allowed;
+    background-image: none;
+    color: $theme-white
+  }
+}
+
+.error {
+  font-size: 12px;
+  margin-left: 1rem;
+}

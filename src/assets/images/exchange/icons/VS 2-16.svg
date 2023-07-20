@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 144 144"
+	 enable-background="new 0 0 144 144" xml:space="preserve">
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  bottomLeftOrigin="true" height="9204.43" width="9884.416" x="-6910.837" y="-991.587"></sliceSourceBounds>
+	</sfw>
+</metadata>
+<g id="BG">
+</g>
+<g id="Object">
+	<g>
+		<g>
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="24.9665" y1="65.2648" x2="119.0335" y2="65.2648">
+				<stop  offset="0" style="stop-color:#F1D618"/>
+				<stop  offset="1" style="stop-color:#ECB023"/>
+			</linearGradient>
+			<path fill="url(#SVGID_1_)" d="M115.568,67.383c1.177,0,2.336,0.113,3.465,0.333c-1.658-2.926-4.798-4.901-8.401-4.901H33.368
+				c-3.603,0-6.743,1.976-8.401,4.901c1.13-0.22,2.289-0.333,3.465-0.333H115.568z"/>
+			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0.1813" y1="57.4801" x2="143.8187" y2="57.4801">
+				<stop  offset="0" style="stop-color:#F1D618"/>
+				<stop  offset="1" style="stop-color:#ECB023"/>
+			</linearGradient>
+			<path fill="url(#SVGID_2_)" d="M135.908,91.747c14.762-22.532,6.993-46.423-7.963-55.747
+				c-15.114-9.42-32.042-11.598-49.305-12.683c-2.208-0.139-11.07-0.139-13.278,0H65.36c-17.263,1.085-34.19,3.263-49.304,12.683
+				C1.1,45.325-6.669,69.216,8.091,91.747v-11.46c-3.689-5.244-5.158-7.291-4.844-11.291c0.349-4.466,4.045-11.997,8.101-16.493
+				c8.83-9.789,22.901-14.376,35.591-16.245c0.093-0.014,0.188-0.028,0.284-0.042c16.43-2.399,33.123-2.399,49.553,0
+				c0.096,0.014,0.191,0.028,0.284,0.042c12.689,1.869,26.761,6.456,35.591,16.245c4.056,4.496,7.752,12.027,8.101,16.493
+				c0.313,4-1.154,6.047-4.845,11.291V91.747z"/>
+		</g>
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="13.633" y1="95.6603" x2="130.3671" y2="95.6603">
+			<stop  offset="0" style="stop-color:#F1D618"/>
+			<stop  offset="1" style="stop-color:#ECB023"/>
+		</linearGradient>
+		<path fill="url(#SVGID_3_)" d="M115.568,70.533H28.432c-8.173,0-14.799,6.626-14.799,14.799v20.656
+			c0,8.173,6.625,14.799,14.799,14.799h26.634c3.513,0,7.721-5.586,9.954-8.98c1.536-2.335,4.13-3.783,6.925-3.795
+			c0.019,0,0.037,0,0.055,0c0.019,0,0.037,0,0.056,0c2.795,0.013,5.388,1.46,6.925,3.795c2.233,3.394,6.441,8.98,9.954,8.98h26.634
+			c8.173,0,14.799-6.626,14.799-14.799V85.332C130.367,77.159,123.741,70.533,115.568,70.533z M66.617,100.929h-5.755l-6.984-21.793
+			h5.399l2.651,9.215c0.744,2.619,1.423,5.077,1.94,7.793h0.097c0.55-2.619,1.229-5.206,1.973-7.695l2.78-9.313h5.238
+			L66.617,100.929z M81.359,101.252c-2.489,0-4.946-0.679-6.176-1.357l1.003-4.042c1.293,0.679,3.362,1.357,5.464,1.357
+			c2.264,0,3.46-0.938,3.46-2.36c0-1.357-1.035-2.134-3.653-3.039c-3.622-1.293-6.015-3.298-6.015-6.467
+			c0-3.718,3.137-6.531,8.245-6.531c2.49,0,4.269,0.485,5.562,1.1l-1.1,3.944c-0.841-0.42-2.425-1.034-4.526-1.034
+			c-2.134,0-3.169,1.002-3.169,2.102c0,1.391,1.196,2.005,4.042,3.071c3.848,1.423,5.626,3.428,5.626,6.499
+			C90.122,98.149,87.341,101.252,81.359,101.252z"/>
+	</g>
+</g>
+</svg>

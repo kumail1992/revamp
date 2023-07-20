@@ -1,0 +1,20 @@
+<svg width="11" height="434" viewBox="0 0 11 434" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="5.5" y1="4" x2="5.49998" y2="429" stroke="white" stroke-dasharray="10 10"/>
+<ellipse cx="5.19291" cy="5" rx="5.10697" ry="5" fill="url(#paint0_linear_6201_107719)"/>
+<ellipse cx="5.19291" cy="46" rx="5.10697" ry="5" fill="url(#paint1_linear_6201_107719)"/>
+<ellipse cx="5.19291" cy="429" rx="5.10697" ry="5" fill="url(#paint2_linear_6201_107719)"/>
+<defs>
+<linearGradient id="paint0_linear_6201_107719" x1="0.0859375" y1="5" x2="10.2999" y2="5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F2D71A"/>
+<stop offset="1" stop-color="#ECB024"/>
+</linearGradient>
+<linearGradient id="paint1_linear_6201_107719" x1="0.0859375" y1="46" x2="10.2999" y2="46" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F2D71A"/>
+<stop offset="1" stop-color="#ECB024"/>
+</linearGradient>
+<linearGradient id="paint2_linear_6201_107719" x1="0.0859375" y1="429" x2="10.2999" y2="429" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F2D71A"/>
+<stop offset="1" stop-color="#ECB024"/>
+</linearGradient>
+</defs>
+</svg>

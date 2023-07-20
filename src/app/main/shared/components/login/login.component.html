@@ -1,0 +1,96 @@
+<div class="d-flex align-items-center justify-content-between p-3 modal-head">
+  <img
+    loading="lazy"
+    fetchpriority="high"
+    src="https://ncdn.kheloyaar.club/assets/images/newUiAssets/logos/logo-row.svg"
+    height="40"
+    alt="Logo"
+  />
+
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon class="material-icons-outlined"> close </mat-icon>
+  </button>
+</div>
+<mat-dialog-content class="p-3">
+  <form [formGroup]="loginForm" *ngIf="loginForm">
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <ngx-intl-tel-input
+          [cssClass]="'form-control custom'"
+          id="login"
+          [enableAutoCountrySelect]="true"
+          [enablePlaceholder]="true"
+          [searchCountryFlag]="true"
+          [phoneValidation]="true"
+          [separateDialCode]="false"
+          [selectedCountryISO]="CountryISO.India"
+          formControlName="teleNo"
+        >
+        </ngx-intl-tel-input>
+        <ng-container
+          *ngIf="!f['teleNo'].valid && f['teleNo'].touched && f['teleNo'].dirty"
+        >
+          <small
+            class="error text-danger"
+            *ngIf="f['teleNo'].errors?.['required']"
+          >
+            Telephone Number is required
+          </small>
+          <small
+            class="error text-danger"
+            *ngIf="loginForm.value.teleNo && f['teleNo'].errors"
+          >
+            Invalid Telephone Number
+          </small>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-md-12 mb-3">
+      <input
+        type="password"
+        class="form-control custom"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <ng-container
+        *ngIf="
+          !f['password'].valid && f['password'].touched && f['password'].dirty
+        "
+      >
+        <small
+          class="error text-danger"
+          *ngIf="f['password'].errors?.['required']"
+        >
+          Password is required
+        </small>
+      </ng-container>
+    </div>
+    <div class="col-md-12 mb-3">
+      <mat-checkbox color="primary" formControlName="terms">
+        I agree that I have read Terms & Conditions policy
+      </mat-checkbox>
+    </div>
+    <div class="col-lg-12">
+      <button
+        class="btn theme-btn w-100 mb-3"
+        [disabled]="
+          loginForm.invalid || f['terms'].value === false || logginUser
+        "
+        (click)="onSubmit('user')"
+      >
+        {{ logginUser ? "Loggig in..." : "Login" }}
+      </button>
+      <button
+        class="btn theme-btn w-100"
+        [disabled]="f['terms'].value === false || logginDemoUser"
+        (click)="onSubmit('demo')"
+      >
+      {{ logginDemoUser ? "Loggig in..." : "Login with Demo ID" }}
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>
+<!-- <mat-dialog-actions align="end" class="p-3">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions> -->
