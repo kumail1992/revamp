@@ -15,6 +15,8 @@ const LANGUAGE = 'lan'
 })
 export class StorageService {
   private userObj = new BehaviorSubject<LoginResponse | null>(null)
+  private token = new BehaviorSubject<string>('')
+  private url = new BehaviorSubject<string>('')
 
   constructor() { }
   public getToken(): string | null {
@@ -32,6 +34,23 @@ export class StorageService {
   public saveToken(token: string): void {
     localStorage.setItem(TOKEN_KEY, token);
   }
+
+  public setToken(token: string): void {
+    this.token.next(token)
+  }
+
+  public getTokenObservable() {
+    return this.token.asObservable()
+  }
+
+  public setURL(url: string): void {
+    this.url.next(url)
+  }
+
+  public getURL() {
+    return this.url.asObservable()
+  }
+
 
   public deleteToken(): void {
     localStorage.removeItem(TOKEN_KEY);

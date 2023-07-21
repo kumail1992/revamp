@@ -163,6 +163,7 @@ export class LoginComponent implements OnInit {
       this.storageService.setDemoStatus(userType === 'user' ? 'false' : 'true');
       if (res.token) {
         this.storageService.saveToken(res.token);
+        this.storageService.setToken(res.token)
         this.storageService.saveUserName(res.userTitle ?? '');
       }
       if (res.admin && res.admin == true) {
@@ -175,7 +176,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.storageService.setRole('client');
         this.dialogRef.close();
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['client']);
       }
     } else {
       if (this.currentLang === 'hindi') {

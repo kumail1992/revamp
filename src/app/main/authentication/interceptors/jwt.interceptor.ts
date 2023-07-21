@@ -24,7 +24,7 @@ export class JwtInterceptor implements HttpInterceptor {
       headers: request.headers.set('Authorization', `Bearer ${authToken}`),
     });
     return next.handle(authReq).pipe(
-      tap((res) => console.log(res)),
+      tap(console.log),
     //   catchError((error: HttpErrorResponse) => {
     //     if (error.status === 401) {
     //       // handle the 401 error here, for example, redirect to login page

@@ -8,49 +8,20 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'landing',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('./dashboard/dashboard.module').then(
-                (m) => m.DashboardModule
-              ),
-          },
-          {
-            path: '**',
-            redirectTo: '',
-          },
-        ],
-      },
-      {
         path: 'client',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('./dashboard/dashboard.module').then(
-                (m) => m.DashboardModule
-              ),
-          },
-          {
-            path: 'in-play',
-            loadChildren: () =>
-              import('./in-play/in-play.module').then((m) => m.InPlayModule),
-          },
-          {
-            path: '**',
-            redirectTo: '',
-          },
-        ],
+        loadChildren: () =>
+          import('./client/client.module').then((m) => m.ClientModule)
       },
       {
-        path: '**',
-        loadChildren: () =>
-          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-      },
+        path:'**',
+        redirectTo:'client'
+      }
     ],
   },
+  {
+    path:'**',
+    redirectTo:'/client'
+  }
 ];
 
 @NgModule({

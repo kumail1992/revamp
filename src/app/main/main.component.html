@@ -19,7 +19,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <ul class="list-inline mb-0 top-nav d-none d-lg-block">
               <li class="list-inline-item text-center">
-                <a [routerLink]="initialRoute" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">
+                <a routerLink="client" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">
                   <img
                     src="assets/images/newUiAssets/icons/exchange.svg"
                     height="24"
@@ -55,7 +55,7 @@
               >menu</mat-icon
             >
           <ul id="right-side-items" class="list-inline mb-0">
-            <ng-container *ngIf="(userProfile$ | async) === null">
+            <ng-container *ngIf="(loginToken$ | async) === '' || (userProfile$ | async) === null">
               <li class="list-inline-item">
                 <div class="d-flex auth-btns-wrapper">
                   <div class="login-btn w-50" (click)="onLogin()">
@@ -69,7 +69,7 @@
                 </div>
               </li>
             </ng-container>
-            <ng-container *ngIf="(userProfile$ | async) as user">
+            <ng-container *ngIf="(loginToken$ | async) && (userProfile$ | async) as user">
              Hello {{user.userTitle}}!!
             </ng-container>
           </ul>
