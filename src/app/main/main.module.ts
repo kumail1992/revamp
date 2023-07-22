@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
     MatIconModule,
     MatDialogModule,
     NgxIntlTelInputModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
 })
 export class MainModule { }

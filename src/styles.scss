@@ -21,9 +21,7 @@ body {
 
 body {
   margin: 0;
-  font-size: 14px;
   color: $theme-white;
-  font-family: $font-family-poppins;
 }
 
 .bg-theme-dark {
@@ -49,6 +47,7 @@ mat-drawer-container.theme-wrapper {
           margin-right: 15px;
         }
         a {
+          display: block;
           img {
             margin-bottom: 10px;
           }

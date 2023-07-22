@@ -101,6 +101,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  closeDialog() {
+    this.storageService.setURL('')
+    this.dialogRef.close()
+  }
+
   loginApiCall(payload: any, userType: string) {
     return this.recaptchaV3Service.execute('importantAction').pipe(
       switchMap((token) => {
@@ -176,7 +181,13 @@ export class LoginComponent implements OnInit {
       } else {
         this.storageService.setRole('client');
         this.dialogRef.close();
-        this.router.navigate(['client']);
+        this.storageService.getURL().subscribe(res => {
+          if(res) {
+            this.router.navigateByUrl(res)
+          } else {
+            this.router.navigate(['client']);
+          }
+        })
       }
     } else {
       if (this.currentLang === 'hindi') {

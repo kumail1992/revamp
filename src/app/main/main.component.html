@@ -18,36 +18,16 @@
       <header class="rounded-3 bg-theme-dark p-3">
         <div class="d-flex align-items-center justify-content-between">
             <ul class="list-inline mb-0 top-nav d-none d-lg-block">
-              <li class="list-inline-item text-center">
-                <a routerLink="client" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">
+              <li class="list-inline-item text-center" *ngFor="let item of menu | sortByOrder">
+                <a [routerLink]="item.link" [routerLinkActiveOptions]="item.option" routerLinkActive="active">
                   <img
-                    src="assets/images/newUiAssets/icons/exchange.svg"
+                    [src]="item.image"
                     height="24"
-                    alt="Dashboard"
+                    [alt]="item.text"
                   />
-                  <div>Kheloyar Exch</div>
+                  <div>{{item.text}}</div>
                 </a>
               </li>
-              <li class="list-inline-item text-center">
-                <a routerLink="client/in-play" routerLinkActive="active">
-                  <img
-                    src="assets/images/newUiAssets/icons/aviator.svg"
-                    height="24"
-                    alt="Dashboard"
-                  />
-                  <div>Aviator</div>
-                </a>
-              </li>
-              <!-- <li class="list-inline-item text-center">
-                <a routerLink="client/all-casino" routerLinkActive="active">
-                  <img
-                    src="assets/images/newUiAssets/icons/all-casino.svg"
-                    height="24"
-                    alt="Dashboard"
-                  />
-                  <div>All Casino</div>
-                </a>
-              </li> -->
             </ul>
             <mat-icon
               (click)="onOpenBottomMenu()"

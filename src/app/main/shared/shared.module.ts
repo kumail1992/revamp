@@ -9,9 +9,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { SortByOrderPipe } from './utilities/sort-by-order.pipe';
 
 @NgModule({
-  declarations: [BottomSheetComponent, LoginComponent],
+  declarations: [BottomSheetComponent, LoginComponent, SortByOrderPipe],
   imports: [
     CommonModule,
     RouterModule,
@@ -22,6 +23,6 @@ import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
     MatCheckboxModule,
     NgxIntlTelInputModule
   ],
-  exports: [BottomSheetComponent, LoginComponent]
+  exports: [BottomSheetComponent, LoginComponent, SortByOrderPipe]
 })
 export class SharedModule {}

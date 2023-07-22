@@ -13,15 +13,16 @@ const routes: Routes = [
           import('./client/client.module').then((m) => m.ClientModule)
       },
       {
+        path:'landing',
+        loadChildren: () =>
+          import('./landing/landing.module').then((m) => m.LandingModule)
+      },
+      {
         path:'**',
-        redirectTo:'client'
-      }
+        redirectTo:'landing'
+      },
     ],
   },
-  {
-    path:'**',
-    redirectTo:'/client'
-  }
 ];
 
 @NgModule({

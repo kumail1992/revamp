@@ -17,6 +17,7 @@ export class StorageService {
   private userObj = new BehaviorSubject<LoginResponse | null>(null)
   private token = new BehaviorSubject<string>('')
   private url = new BehaviorSubject<string>('')
+  private isAuthenticated = new BehaviorSubject<boolean>(false)
 
   constructor() { }
   public getToken(): string | null {

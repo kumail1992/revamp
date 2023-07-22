@@ -1,36 +1,42 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoggedinGuard } from '../authentication/guards/loggedin.guard';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { LoggedinGuard } from "../authentication/guards/loggedin.guard";
 
 const routes: Routes = [
   {
-    path: '',
-    canActivateChild:[LoggedinGuard],
-    children:[
+    path: "",
+    canActivateChild: [LoggedinGuard],
+    children: [
       {
-        path:'',
+        path: "",
         loadChildren: () =>
-        import('../dashboard/dashboard.module').then(
-          (m) => m.DashboardModule,
-        ),
-        data: { accessWithoutLogin: true }
+          import("../dashboard/dashboard.module").then(
+            (m) => m.DashboardModule
+          ),
+        data: {accessWithoutLogin: false},
       },
       {
-        path: 'in-play',
+        path: "in-play",
         loadChildren: () =>
-          import('./in-play/in-play.module').then((m) => m.InPlayModule),
-          data: { accessWithoutLogin: false }
+          import("./in-play/in-play.module").then((m) => m.InPlayModule),
+        data: {accessWithoutLogin: false},
       },
       {
-        path:'**',
-        redirectTo: ''
+        path: "gamedetails",
+        loadChildren: () =>
+          import("./gamedetails/gamedetails.module").then((m) => m.GamedetailsModule),
+        data: {accessWithoutLogin: false, allowedID:['SLOT_GAMES','INSTANT_WIN','SHOOTING_GAMES','LIVE_CASINO']},
       },
-    ]
+      {
+        path: "**",
+        redirectTo: "",
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ClientRoutingModule { }
+export class ClientRoutingModule {}
