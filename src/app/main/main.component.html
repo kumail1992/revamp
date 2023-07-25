@@ -15,6 +15,9 @@
     </mat-drawer>
   
     <div class="p-3 h-100">
+      <marquee behavior="scroll" direction="left" scrollamount="8" class="rounded-3 bg-theme-dark p-1" *ngIf="news$ | async as newsObject">
+        <small>{{newsObject.news}}</small>
+      </marquee>
       <header class="rounded-3 bg-theme-dark p-3">
         <div class="d-flex align-items-center justify-content-between">
             <ul class="list-inline mb-0 top-nav d-none d-lg-block">
@@ -51,11 +54,14 @@
             </ng-container>
             <ng-container *ngIf="(loginToken$ | async) && (userProfile$ | async) as user">
              Hello {{user.userTitle}}!!
+             <span *ngIf="(wallet$ | async) as wallet">
+              {{wallet.balance}}
+             </span>
             </ng-container>
           </ul>
         </div>
       </header>
-      <div class="content-area mt-3">
+      <div class="content-area mt-3" [ngClass]="{'content-with-news': isAuthenticated && (news$ | async)!== null}">
         <button type="button" mat-button (click)="drawer.toggle()">
           Toggle sidenav
         </button>

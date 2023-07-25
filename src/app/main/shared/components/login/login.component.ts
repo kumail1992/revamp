@@ -1,5 +1,5 @@
 import { StorageService } from './../../services/storage.service';
-import { finalize, of, switchMap } from 'rxjs';
+import { finalize, first, of, switchMap } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
@@ -181,7 +181,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.storageService.setRole('client');
         this.dialogRef.close();
-        this.storageService.getURL().subscribe(res => {
+        this.storageService.getURL().pipe(first()).subscribe(res => {
           if(res) {
             this.router.navigateByUrl(res)
           } else {

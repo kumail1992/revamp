@@ -73,8 +73,6 @@ export function conditionalRequiredValidator(login_id: string, transaction_key: 
     const transactionKey = formGroup.get(transaction_key);
     const paymentGateway = formGroup.get(gateway);
     const stripeKey = formGroup.get(stripe_key);
-
-    console.log(loginId, transactionKey, paymentGateway, stripeKey)
     if (paymentGateway?.value === 'Stripe') {
       transactionKey?.setErrors(null);
       loginId?.setErrors(null)

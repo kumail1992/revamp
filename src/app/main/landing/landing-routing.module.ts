@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PreLoginGuard } from '../authentication/guards/prelogin.guard';
 
 const routes: Routes = [
   {
     path: '',
-    canActivateChild:[],
+    canActivateChild:[PreLoginGuard],
     children:[
       {
         path:'dashboard',

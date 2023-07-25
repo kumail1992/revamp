@@ -1,26 +1,14 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-auto mb-4">
+  <div class="row justify-content-evenly justify-content-lg-start">
+    <div class="col-auto mb-4" *ngFor="let item of data | sortByOrder">
       <div class="tiles text-center p-2">
-        <a routerLink="dashboard" routerLinkActive="active">
+        <a [routerLink]="item.link" [routerLinkActiveOptions]="item.option" routerLinkActive="active" (click)="dismissSheet($event)">
           <img
-            src="assets/images/newUiAssets/icons/exchange.svg"
+            [src]="item.image"
             height="24"
-            alt="Dashboard"
+            [alt]="item.text"
           />
-          <div>Kheloyar Exch</div>
-        </a>
-      </div>
-    </div>
-    <div class="col-auto mb-4">
-      <div class="tiles text-center p-2">
-        <a routerLink="client/in-play" routerLinkActive="active">
-          <img
-            src="assets/images/newUiAssets/icons/aviator.svg"
-            height="24"
-            alt="Dashboard"
-          />
-          <div>Aviator</div>
+          <div>{{item.text}}</div>
         </a>
       </div>
     </div>

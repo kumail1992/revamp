@@ -64,8 +64,11 @@ mat-drawer-container.theme-wrapper {
   }
 
   .content-area {
-    height: calc(100vh - 125px);
+    height: calc(100vh - 135px);
     overflow: auto;
+    &.content-with-news {
+      height: calc(100vh - 170px);
+    }
   }
 }
 

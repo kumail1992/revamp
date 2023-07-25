@@ -5,9 +5,11 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDrawerMode } from '@angular/material/sidenav';
 import { BottomSheetComponent } from './shared/components/bottom-sheet/bottom-sheet.component';
-import { Observable, shareReplay, tap } from 'rxjs';
-import { LoginResponse } from './shared/models/models';
+import { Observable, interval, map, shareReplay, switchMap, tap, catchError, timer, filter } from 'rxjs';
+import { CheckTokenRequest, GetWalletRequest, LoginResponse } from './shared/models/models';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { BackendService } from './shared/services/backend.service';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-main',
@@ -20,32 +22,59 @@ export class MainComponent {
   userProfile$!: Observable<LoginResponse | null>;
   loginToken$!: Observable<string>;
   initialRoute: string = 'landing';
-  token = '';
   authData!: any;
   menu!: any[];
   isAuthenticated: boolean = false;
+  news$!: Observable<any>;
+  wallet$!: Observable<any>;
+  token!: string;
   constructor(
     private _bottomSheet: MatBottomSheet,
     private _dialog: MatDialog,
     private storageService: StorageService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private backend:BackendService
   ) {}
 
   ngOnInit(): void {
     this.setDrawerConfigs();
+    this.initializeMenu();
     this.storageService.setUserProfile(this.storageService.getAuthData());
     this.storageService.setToken(this.storageService.getToken() ?? '');
     this.userProfile$ = this.storageService
       .getUserProfile()
       .pipe(shareReplay());
     this.loginToken$ = this.storageService.getTokenObservable().pipe(
-      tap((res) => {
-        this.isAuthenticated = res ? true : false;
+      tap((token) => {
+        this.token = token ? token : ''
+        this.isAuthenticated = token ? true : false;
+        if(this.isAuthenticated) {
+          this.getData()
+        }
         this.initializeMenu();
       }),
       shareReplay()
     );
+  }
+
+  getData() {
+    this.getNews()
+    this.getWalletDetails()
+  }
+
+  getNews() {
+    let req = new CheckTokenRequest(this.token);
+    this.news$ = this.backend.getNews(req).pipe(shareReplay())
+  }
+
+  getWalletDetails() {
+    let req = new GetWalletRequest(this.token);
+    this.wallet$ = timer(0,environment.walletCallTimer).pipe(
+      filter(() => this.isAuthenticated),
+      switchMap(() => this.backend.getWallet(req)),
+      shareReplay()
+    )
   }
 
   initializeMenu() {
@@ -139,6 +168,7 @@ export class MainComponent {
   onOpenBottomMenu() {
     this._bottomSheet.open(BottomSheetComponent, {
       panelClass: 'theme-bottom-wrapper',
+      data: this.menu
     });
   }
 
@@ -155,6 +185,7 @@ export class MainComponent {
     } else {
       this.isDrawerOpen = true;
       this.dynamicMode = 'side';
+      this._bottomSheet.dismiss();
     }
   }
 
@@ -163,10 +194,6 @@ export class MainComponent {
       width: '500px',
       panelClass: 'theme-modal',
       disableClose: true,
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 }
