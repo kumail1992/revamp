@@ -1,8 +1,7 @@
-@import url('//fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url("//fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 @import "mixins";
-@import 'intl-tel-input/build/css/intlTelInput.css';
-@import 'ngx-toastr/toastr';
-
+@import "intl-tel-input/build/css/intlTelInput.css";
+@import "ngx-toastr/toastr";
 
 html,
 body {
@@ -82,7 +81,7 @@ mat-drawer-container.theme-wrapper {
     width: 100px;
     a {
       font-size: 10px;
-      color:$theme-white;
+      color: $theme-white;
       img {
         margin-bottom: 10px;
       }
@@ -116,7 +115,7 @@ a {
 .iti {
   display: flex;
   .selected-dial-code {
-    color:$theme-white
+    color: $theme-white;
   }
 }
 
@@ -138,7 +137,11 @@ a {
   border-radius: 10px;
   border: 1px solid transparent;
   color: $theme-bg-color;
-  background-image: linear-gradient(to right,$theme-golden-gradient-light 0%,$theme-golden-gradient-dark 100%);
+  background-image: linear-gradient(
+    to right,
+    $theme-golden-gradient-light 0%,
+    $theme-golden-gradient-dark 100%
+  );
   box-shadow: none;
   font-weight: bold;
   &:disabled {
@@ -146,11 +149,28 @@ a {
     background-color: $theme-input-focus-bg;
     cursor: not-allowed;
     background-image: none;
-    color: $theme-white
+    color: $theme-white;
   }
 }
 
 .error {
   font-size: 12px;
   margin-left: 1rem;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  background-color: $theme-golden;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: $theme-input-bg;
+  border-radius: 12px;
 }

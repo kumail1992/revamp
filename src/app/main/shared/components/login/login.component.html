@@ -78,14 +78,14 @@
         "
         (click)="onSubmit('user')"
       >
-        {{ logginUser ? "Loggig in..." : "Login" }}
+        {{ logginUser ? "Logging in..." : "Login" }}
       </button>
       <button
         class="btn theme-btn w-100"
         [disabled]="f['terms'].value === false || logginDemoUser"
         (click)="onSubmit('demo')"
       >
-      {{ logginDemoUser ? "Loggig in..." : "Login with Demo ID" }}
+        {{ logginDemoUser ? "Logging in..." : "Login with Demo ID" }}
       </button>
     </div>
   </form>

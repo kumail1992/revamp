@@ -1,1 +1,68 @@
-<p>all-casino works!</p>
+<ng-container *ngIf="!pageLoading; else loadingPage">
+  <ul class="list-inline mb-0 pb-3 d-flex flex-nowrap">
+    <li
+      [class.active]="selectedFilter === item"
+      class="list-inline-item filter-chip"
+      (click)="showFilteredList('filter', item)"
+      *ngFor="let item of filtersList"
+    >
+      {{ item }}
+    </li>
+    <!-- <li class="list-inline-item text-nowrap">
+    Total: {{ listToShow.length }} Games
+  </li> -->
+  </ul>
+  <cdk-virtual-scroll-viewport
+    itemSize="10"
+    minBufferPx="500px"
+    maxBufferPx="600"
+    class="scroll-container"
+    *ngIf="!isLoading; else loading"
+  >
+    <div class="cards-wrapper me-2">
+      <a
+        [routerLink]="card.link"
+        class="game-card position-relative"
+        *cdkVirtualFor="let card of listToShow"
+      >
+        <img
+          loading="lazy"
+          fetchpriority="high"
+          (error)="onErrorImages($event)"
+          class="loader-img"
+          srcset="
+            assets/images/newUiAssets/indexGames/{{card.GameID}}.webp 3x,
+            assets/images/newUiAssets/indexGames/{{card.GameID}}.webp 2x,
+            assets/images/newUiAssets/indexGames/{{card.GameID}}.webp 1x
+          "
+          sizes="(max-width: 479px) 100vw, (max-width: 767px) 90vw, 800px"
+          src="assets/images/newUiAssets/indexGames/{{ card.GameID }}.webp"
+          alt="Online betting Id Provider, Online Cricket Id"
+        />
+        <div class="game-name position-absolute">
+          {{ card.GameName }}
+        </div>
+      </a>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</ng-container>
+
+<ng-template #loading>
+  <div class="cards-wrapper me-2">
+    <ng-container *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]">
+      <div class="game-card">
+        <img src="assets/preloader-dark.svg" class="loader-img" alt="loader" />
+      </div>
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #loadingPage>
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <img
+      width="150px"
+      height="150px"
+      src="https://ncdn.kheloyaar.club/assets/preloader.svg"
+    />
+  </div>
+</ng-template>

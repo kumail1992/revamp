@@ -1,22 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { MainRoutingModule } from './main-routing.module';
-import { MainComponent } from './main.component';
-import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { HttpClientModule } from '@angular/common/http';
-import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
-import { SharedModule } from './shared/shared.module';
-
+import { MainRoutingModule } from "./main-routing.module";
+import { MainComponent } from "./main.component";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { HttpClientModule } from "@angular/common/http";
+import { NgxIntlTelInputModule } from "ngx-intl-tel-input";
+import { SharedModule } from "./shared/shared.module";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
-  declarations: [
-    MainComponent
-  ],
+  declarations: [MainComponent],
   imports: [
     CommonModule,
     MainRoutingModule,
@@ -27,7 +25,8 @@ import { SharedModule } from './shared/shared.module';
     MatDialogModule,
     NgxIntlTelInputModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule,
   ],
 })
-export class MainModule { }
+export class MainModule {}

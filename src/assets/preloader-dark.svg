@@ -1,0 +1,60 @@
+<svg width="160" height="150" viewBox="0 0 160 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 65.348 65.739"
+	 enable-background="new 0 0 65.348 65.739" xml:space="preserve">
+	 <style>
+	 #moving-img{
+  animation: hover-in-air 1.3s infinite;
+}
+
+@keyframes hover-in-air {
+  0% {
+    transform:translate(0%,-50%)
+  }
+  20% {
+     transform:translate(0%,0%)
+  }
+  100% {
+     transform:translate(0%,0%)
+  }
+}
+	 #moving-img2{
+    
+  animation: hover-in-air2 1.3s infinite;;
+  
+}
+
+@keyframes hover-in-air2 {
+  0% {
+    transform:translate(-50%,50%)
+  }
+  60% {
+     transform:translate(0%,0%)
+  }
+  100% {
+     transform:translate(0%,0%)
+  }
+}
+ #moving-img3{
+  
+  animation: hover-in-air3 1.3s infinite;
+ 
+}
+
+@keyframes hover-in-air3 {
+  0% {
+    transform:translate(50%,50%)
+  }
+  80% {
+     transform:translate(0%,0%);
+  }
+  100% {
+     transform:translate(0%,0%)
+  }
+}
+	 </style>
+<rect width="160" height="150" fill="#202020"/>
+<path id="moving-img" d="M48 86V9H69V64.825L48 86Z" fill="#141414"/>
+<path id="moving-img2" d="M48.5 94V121.5L115 49H90L48.5 94Z" fill="#141414"/>
+<path id="moving-img3" d="M131 132.5L116 141L75 92L88 78L131 132.5Z" fill="#141414"/>
+</svg>

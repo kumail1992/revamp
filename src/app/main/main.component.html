@@ -1,72 +1,109 @@
 <mat-drawer-container class="theme-wrapper" autosize>
-    <mat-drawer
-      #drawer
-      [mode]="dynamicMode"
-      [opened]="isDrawerOpen"
-      class="border-0"
-    >
-      <div class="my-3 p-3 rounded-end bg-theme-dark sidebar">
-        <img
-          src="https://ncdn.kheloyaar.club/assets/images/newUiAssets/logos/logo-col.svg"
-          width="100"
-          alt="Logo"
-        />
-      </div>
-    </mat-drawer>
-  
-    <div class="p-3 h-100">
-      <marquee behavior="scroll" direction="left" scrollamount="8" class="rounded-3 bg-theme-dark p-1" *ngIf="news$ | async as newsObject">
-        <small>{{newsObject.news}}</small>
-      </marquee>
-      <header class="rounded-3 bg-theme-dark p-3">
-        <div class="d-flex align-items-center justify-content-between">
-            <ul class="list-inline mb-0 top-nav d-none d-lg-block">
-              <li class="list-inline-item text-center" *ngFor="let item of menu | sortByOrder">
-                <a [routerLink]="item.link" [routerLinkActiveOptions]="item.option" routerLinkActive="active">
-                  <img
-                    [src]="item.image"
-                    height="24"
-                    [alt]="item.text"
-                  />
-                  <div>{{item.text}}</div>
-                </a>
-              </li>
-            </ul>
-            <mat-icon
-              (click)="onOpenBottomMenu()"
-              class="material-icons-outlined d-block d-lg-none text-white"
-              >menu</mat-icon
-            >
-          <ul id="right-side-items" class="list-inline mb-0">
-            <ng-container *ngIf="(loginToken$ | async) === '' || (userProfile$ | async) === null">
-              <li class="list-inline-item">
-                <div class="d-flex auth-btns-wrapper">
-                  <div class="login-btn w-50" (click)="onLogin()">
-                    <img src="https://ncdn.kheloyaar.club/assets/icons/login.svg" width="15" alt="login icon">
-                    <small class="fw-bold d-block">Login</small>
-                  </div>
-                  <div class="signup-btn w-50">
-                    <img src="https://ncdn.kheloyaar.club/assets/icons/signup.svg" width="15" alt="login icon">
-                    <small class="fw-bold d-block">Signup</small>
-                  </div>
-                </div>
-              </li>
-            </ng-container>
-            <ng-container *ngIf="(loginToken$ | async) && (userProfile$ | async) as user">
-             Hello {{user.userTitle}}!!
-             <span *ngIf="(wallet$ | async) as wallet">
-              {{wallet.balance}}
-             </span>
-            </ng-container>
-          </ul>
-        </div>
-      </header>
-      <div class="content-area mt-3" [ngClass]="{'content-with-news': isAuthenticated && (news$ | async)!== null}">
-        <button type="button" mat-button (click)="drawer.toggle()">
-          Toggle sidenav
-        </button>
-        <router-outlet></router-outlet>
-      </div>
+  <mat-drawer
+    #drawer
+    [mode]="dynamicMode"
+    [opened]="isDrawerOpen"
+    class="border-0"
+  >
+    <div class="my-3 p-3 rounded-end bg-theme-dark sidebar">
+      <img
+        src="https://ncdn.kheloyaar.club/assets/images/newUiAssets/logos/logo-col.svg"
+        width="100"
+        alt="Logo"
+      />
     </div>
-  </mat-drawer-container>
-  
+  </mat-drawer>
+
+  <div class="p-3 h-100">
+    <marquee
+      behavior="scroll"
+      direction="left"
+      scrollamount="8"
+      class="rounded-3 bg-theme-dark p-1"
+      *ngIf="news$ | async as newsObject"
+    >
+      <small>{{ newsObject.news }}</small>
+    </marquee>
+    <header class="rounded-3 bg-theme-dark p-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <ul class="list-inline mb-0 top-nav d-none d-lg-block">
+          <li
+            class="list-inline-item text-center"
+            *ngFor="let item of menu | sortByOrder"
+          >
+            <a
+              [routerLink]="item.link"
+              [routerLinkActiveOptions]="item.option"
+              routerLinkActive="active"
+            >
+              <img [src]="item.image" height="24" [alt]="item.text" />
+              <div>{{ item.text }}</div>
+            </a>
+          </li>
+        </ul>
+        <mat-icon
+          (click)="onOpenBottomMenu()"
+          class="material-icons-outlined d-block d-lg-none text-white"
+          >menu</mat-icon
+        >
+        <ul id="right-side-items" class="list-inline mb-0">
+          <ng-container
+            *ngIf="
+              (loginToken$ | async) === '' || (userProfile$ | async) === null
+            "
+          >
+            <li class="list-inline-item">
+              <div class="d-flex auth-btns-wrapper">
+                <div class="login-btn w-50" (click)="onLogin()">
+                  <img
+                    src="https://ncdn.kheloyaar.club/assets/icons/login.svg"
+                    width="15"
+                    alt="login icon"
+                  />
+                  <small class="fw-bold d-block">Login</small>
+                </div>
+                <div class="signup-btn w-50">
+                  <img
+                    src="https://ncdn.kheloyaar.club/assets/icons/signup.svg"
+                    width="15"
+                    alt="signup icon"
+                  />
+                  <small class="fw-bold d-block">Signup</small>
+                </div>
+              </div>
+            </li>
+          </ng-container>
+          <ng-container
+            *ngIf="(loginToken$ | async) && (userProfile$ | async) as user"
+          >
+            Hello {{ user.userTitle }}!!
+            <span *ngIf="wallet$ | async as wallet">
+              {{ wallet.balance }}
+            </span>
+          </ng-container>
+        </ul>
+      </div>
+    </header>
+    <div
+      class="content-area mt-3"
+      [ngClass]="{
+        'content-with-news': isAuthenticated && (news$ | async) !== null
+      }"
+    >
+      <!-- <button type="button" mat-button (click)="drawer.toggle()">
+          Toggle sidenav
+        </button> -->
+      <router-outlet></router-outlet>
+      <!-- <div
+        class="h-100 d-flex align-items-center justify-content-center"
+        *ngIf="(isLoading$ | async) === true"
+      >
+        <img
+          width="150px"
+          height="150px"
+          src="https://ncdn.kheloyaar.club/assets/preloader.svg"
+        />
+      </div> -->
+    </div>
+  </div>
+</mat-drawer-container>

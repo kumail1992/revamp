@@ -1,6 +1,12 @@
-import { ElementRef } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { debounceTime, map, of, switchMap } from 'rxjs';
+import { ElementRef } from "@angular/core";
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+} from "@angular/forms";
+import { debounceTime, map, of, switchMap } from "rxjs";
 
 export function confirmValidator(
   controlName: string,
@@ -11,7 +17,7 @@ export function confirmValidator(
     const matchingControl = formGroup.controls[matchingControlName];
     if (
       matchingControl.errors &&
-      !matchingControl.errors?.['confirmValidator']
+      !matchingControl.errors?.["confirmValidator"]
     ) {
       return;
     }
@@ -48,15 +54,23 @@ export function validateAllFormFields(formGroup: FormGroup, el?: ElementRef) {
 
 export const emailRegex = `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$`;
 
-export function objectToFormData(obj: Record<any, any>, formData?: FormData, parentKey?: string) {
-  if (typeof formData === 'undefined') {
+export function objectToFormData(
+  obj: Record<any, any>,
+  formData?: FormData,
+  parentKey?: string
+) {
+  if (typeof formData === "undefined") {
     formData = new FormData();
   }
 
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       const propName = parentKey ? `${parentKey}[${key}]` : key;
-      if (typeof obj[key] === 'object' && obj[key] !== null && !(obj[key] instanceof File)) {
+      if (
+        typeof obj[key] === "object" &&
+        obj[key] !== null &&
+        !(obj[key] instanceof File)
+      ) {
         objectToFormData(obj[key], formData, propName);
       } else {
         formData.append(propName, obj[key]);
@@ -67,21 +81,26 @@ export function objectToFormData(obj: Record<any, any>, formData?: FormData, par
   return formData;
 }
 
-export function conditionalRequiredValidator(login_id: string, transaction_key: string, gateway: string, stripe_key: string) {
+export function conditionalRequiredValidator(
+  login_id: string,
+  transaction_key: string,
+  gateway: string,
+  stripe_key: string
+) {
   return (formGroup: FormGroup): ValidationErrors | null => {
     const loginId = formGroup.get(login_id);
     const transactionKey = formGroup.get(transaction_key);
     const paymentGateway = formGroup.get(gateway);
     const stripeKey = formGroup.get(stripe_key);
-    if (paymentGateway?.value === 'Stripe') {
+    if (paymentGateway?.value === "Stripe") {
       transactionKey?.setErrors(null);
-      loginId?.setErrors(null)
-      stripeKey?.setErrors({ required: true })
+      loginId?.setErrors(null);
+      stripeKey?.setErrors({ required: true });
       return { required: true };
-    } else if (paymentGateway?.value === 'Authorized-net') {
-      stripeKey?.setErrors(null)
+    } else if (paymentGateway?.value === "Authorized-net") {
+      stripeKey?.setErrors(null);
       transactionKey?.setErrors({ required: true });
-      loginId?.setErrors({ required: true })
+      loginId?.setErrors({ required: true });
       return { required: true };
     } else {
       return null;
@@ -105,7 +124,7 @@ export function conditionalRequiredValidator(login_id: string, transaction_key: 
     //   transactionKey.setErrors(null);
     //   return null;
     // }
-    return null
+    return null;
   };
 }
 
@@ -125,10 +144,7 @@ export function priceComparisonValidator(control1: string, control2: string) {
   return (formGroup: FormGroup) => {
     const priceControl = formGroup.controls[control1];
     const minPriceControl = formGroup.controls[control2];
-    if (
-      priceControl.errors &&
-      !priceControl.errors?.['priceValidator']
-    ) {
+    if (priceControl.errors && !priceControl.errors?.["priceValidator"]) {
       return;
     }
     if (priceControl.value && priceControl.value <= minPriceControl.value) {
@@ -140,12 +156,12 @@ export function priceComparisonValidator(control1: string, control2: string) {
 }
 
 export function replaceEmptyWithNull(obj: any) {
-  if (typeof obj === 'object' && obj !== null) {
+  if (typeof obj === "object" && obj !== null) {
     for (let key in obj) {
       if (obj.hasOwnProperty(key)) {
-        if (typeof obj[key] === 'object') {
+        if (typeof obj[key] === "object") {
           obj[key] = replaceEmptyWithNull(obj[key]);
-        } else if (obj[key] === '') {
+        } else if (obj[key] === "") {
           obj[key] = null;
         }
       }
@@ -155,7 +171,7 @@ export function replaceEmptyWithNull(obj: any) {
 }
 
 export function removeWhiteSpace(string: string) {
-    return string.replaceAll(" ", "")
+  return string.replaceAll(" ", "");
 }
 // return (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
 //   return userService.post<{ sub_domain: string }, Response<[]>>('vendor/check-sub-domain', { sub_domain: control.value }).pipe(

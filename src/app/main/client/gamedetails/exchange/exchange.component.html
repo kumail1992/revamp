@@ -1,1 +1,14 @@
-<p>exchange works!</p>
+<iframe
+  *ngIf="!isLoading && safeSrc; else loading"
+  class="iframe-wrapper"
+  [src]="safeSrc | safe"
+></iframe>
+<ng-template #loading>
+  <div class="h-100 d-flex align-items-center justify-content-center">
+    <img
+      width="150px"
+      height="150px"
+      src="https://ncdn.kheloyaar.club/assets/preloader.svg"
+    />
+  </div>
+</ng-template>
